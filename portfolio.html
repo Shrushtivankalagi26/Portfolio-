@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport meta tag ensures responsive design on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrushti V Ankalagi - Portfolio</title>
+    
+    <!-- Link to Google Fonts for beautiful typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to Font Awesome for icons (LinkedIn, GitHub, Email) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========================================
+           CSS VARIABLES - Colors and Spacing
+           These variables make it easy to change the color scheme
+           ======================================== */
+        :root {
+            --primary-color: #0066cc;      /* Professional blue */
+            --dark-color: #0a1628;         /* Dark navy */
+            --light-color: #f5f7fa;        /* Light background */
+            --accent-color: #00d4ff;       /* Cyan accent */
+            --text-dark: #1a1a2e;          /* Dark text */
+            --text-light: #666666;         /* Light text */
+            --border-color: #e0e0e0;       /* Border color */
+            --white: #ffffff;              /* White */
+            --transition: all 0.3s ease;   /* Smooth transitions */
+        }
+
+        /* ========================================
+           GLOBAL STYLES
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Ensures padding/border doesn't add to width */
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling when clicking navigation links */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           NAVIGATION BAR
+           ======================================== */
+        nav {
+            background-color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100; /* Keeps nav on top when scrolling */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo/Brand styling */
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Navigation links container */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        /* Underline animation on hover */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu toggle button (hidden on desktop) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-dark);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN - Mobile Navigation
+           ======================================== */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            /* Hide navigation links on mobile, show hamburger */
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                gap: 0;
+                display: none;
+            }
+
+            /* Show nav links when hamburger is active */
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background shapes */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Fade in and move up animation for hero content */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero .title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Call-to-action button */
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--accent-color);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Scroll down arrow animation */
+        .scroll-arrow {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* ========================================
+           CONTAINER / SECTION STYLING
+           ======================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section.light {
+            background-color: var(--light-color);
+        }
+
+        section.dark {
+            background-color: var(--white);
+        }
+
+        /* Section heading styling */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        /* Decorative underline for section titles */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        /* ========================================
+           ABOUT SECTION
+           ======================================== */
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* ========================================
+           SKILLS SECTION
+           ======================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Individual skill card */
+        .skill-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Progress bar styling */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        /* ========================================
+           PROJECTS SECTION
+           ======================================== */
+        .project-card {
+            background-color: var(--white);
+            border-left: 5px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateX(10px);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ========================================
+           ACTIVITIES SECTION
+           ======================================== */
+        .activities-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .activity-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Icon styling for activities */
+        .activity-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .activity-content h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .activity-content p {
+            color: var(--text-light);
+        }
+
+        /* ========================================
+           ASPIRATIONS SECTION
+           ======================================== */
+        .aspirations-box {
+            background: linear-gradient(135deg, var(--primary-color), #667eea);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+        }
+
+        .aspirations-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* ========================================
+           CONTACT SECTION
+           ======================================== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Contact icon styling */
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            word-break: break-all;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN - Mobile Adjustments
+           ======================================== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .title {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 0;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         NAVIGATION BAR
+         ======================================== -->
+    <nav>
+        <div class="nav-container">
+            <!-- Logo/Brand -->
+            <a href="#" class="nav-logo">SA</a>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#aspirations">Aspirations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION
+         ======================================== -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Shrushti V Ankalagi</h1>
+            <p class="title">Electronics and Communication Engineering Student</p>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+            <!-- Scroll down arrow -->
+            <div class="scroll-arrow" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+                <i class="fas fa-chevron-down" style="color: white; font-size: 1.5rem;"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ABOUT SECTION
+         ======================================== -->
+    <section id="about" class="light">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I am a 4th semester Electronics and Communication Engineering student at Basaveshwar Engineering College, Vidyagiri, Bagalkot. I am interested in technology, electronics, and solving mathematical problems. I enjoy learning about new technologies and continuously improving my technical knowledge. My hobbies include acting and drawing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SKILLS SECTION
+         ======================================== -->
+    <section id="skills" class="dark">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <!-- Skill Card 1: C Programming -->
+                <div class="skill-card">
+                    <h3>C Programming</h3>
+                    <p>Proficient in writing efficient and structured code using C programming language.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2: Python -->
+                <div class="skill-card">
+                    <h3>Python</h3>
+                    <p>Experience in Python for general-purpose programming and problem-solving.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3: Embedded Systems -->
+                <div class="skill-card">
+                    <h3>Embedded Systems</h3>
+                    <p>Knowledge of hardware description language and digital design concepts.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PROJECTS SECTION
+         ======================================== -->
+    <section id="projects" class="light">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            
+            <!-- Project Card -->
+            <div class="project-card">
+                <h3>Digital Clock Simulation using Verilog</h3>
+                <p>Simulated a digital clock using Verilog HDL in Quartus software. This project demonstrates digital design concepts and hardware description language simulation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ACTIVITIES SECTION
+         ======================================== -->
+    <section id="activities" class="dark">
+        <div class="container">
+            <h2 class="section-title">Activities & Experience</h2>
+            <div class="activities-list">
+                <!-- Activity 1: Hackathon -->
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Hackathon Participation</h3>
+                        <p>Participated in a Hackathon where I collaborated with team members to solve real-world problems using technology and innovation.</p>
+                    </div>
+                </div>
+
+                <!-- Activity 2: Industrial Visit -->
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Industrial Visit</h3>
+                        <p>Industrial visit to a sugar factory to learn about electronics devices and automation systems used in industries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ASPIRATIONS SECTION
+         ======================================== -->
+    <section id="aspirations" class="light">
+        <div class="container">
+            <h2 class="section-title">Future Aspirations</h2>
+            <div class="aspirations-box">
+                <p>My goal is to build a strong career in electronics engineering and continuously develop my technical skills. I am also interested in public service and aspire to contribute to society through meaningful work and responsible leadership.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTACT SECTION
+         ======================================== -->
+    <section id="contact" class="dark">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-container">
+                <!-- Email Contact -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:ankalagishrushti26@gmail.com">ankalagishrushti26@gmail.com</a>
+                </div>
+
+                <!-- LinkedIn Contact -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/shrushti-ankalagi-599082389" target="_blank">Shrushti Ankalagi</a>
+                </div>
+
+                <!-- GitHub Contact -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/Shrushtivankalagi26" target="_blank">Shrushtivankalagi26</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer>
+        <p>&copy; 2026 Shrushti V Ankalagi. All rights reserved.</p>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT - Interactive Features
+         ======================================== -->
+    <script>
+        // ===== Mobile Menu Toggle =====
+        // This JavaScript makes the hamburger menu work on mobile devices
+
+        const hamburger = document.querySelector('.hamburger'); // Select hamburger element
+        const navLinks = document.querySelector('.nav-links');   // Select navigation links
+
+        // Add click event listener to hamburger menu
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');   // Toggle hamburger animation
+            navLinks.classList.toggle('active');    // Show/hide navigation links
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ===== Scroll Animation for Progress Bars =====
+        // This code makes progress bars animate when they come into view
+
+        const observerOptions = {
+            threshold: 0.1, // Trigger when 10% of element is visible
+            rootMargin: '0px 0px -50px 0px' // Start animation 50px before element reaches bottom
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animation to progress fill when in view
+                    entry.target.style.width = entry.target.getAttribute('data-width') || '80%';
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        // Observe all progress bars
+        document.querySelectorAll('.progress-fill').forEach(fill => {
+            const width = fill.style.width;
+            fill.setAttribute('data-width', width);
+            fill.style.width = '0%'; // Start at 0
+            observer.observe(fill);
+        });
+
+        // ===== Smooth Scroll on Navigation Click =====
+        // Modern browsers have scroll-behavior: smooth in CSS, but this enhances it
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
