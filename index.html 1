@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shrushti V Ankalagi | Portfolio</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f4f6f9;
+}
+
+header{
+background:#1f3c88;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+section{
+padding:40px;
+margin:20px;
+background:white;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+color:#1f3c88;
+}
+
+.skills span{
+display:inline-block;
+background:#1f3c88;
+color:white;
+padding:8px 15px;
+margin:5px;
+border-radius:20px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#1f3c88;
+color:white;
+}
+
+a{
+color:#1f3c88;
+text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Shrushti V Ankalagi</h1>
+<p>Electronics & Communication Engineering Student</p>
+<p>Basaveshwar Engineering College, Bagalkot</p>
+</header>
+
+<section>
+<h2>About Me</h2>
+<p>
+I am a 4th semester Electronics and Communication Engineering student with
+interest in electronics, technology, and mathematics problem solving.
+I aim to build a strong career in electronics engineering while also
+contributing to society through meaningful work and responsible leadership.
+</p>
+</section>
+
+<section>
+<h2>Skills</h2>
+<div class="skills">
+<span>C Programming</span>
+<span>Python</span>
+<span>Embedded Systems</span>
+<span>Problem Solving</span>
+</div>
+</section>
+
+<section>
+<h2>Projects</h2>
+<p><b>Digital Clock Simulation</b></p>
+<p>Designed and simulated a digital clock using Verilog code in Quartus.</p>
+</section>
+
+<section>
+<h2>Experience</h2>
+<ul>
+<li>Participated in Hackathon</li>
+<li>Industrial Visit to learn about electronics devices</li>
+</ul>
+</section>
+
+<section>
+<h2>Hobbies</h2>
+<p>Acting and Drawing</p>
+</section>
+
+<section>
+<h2>Contact</h2>
+<p>Email: <a href="mailto:ankalagishrushti26@gmail.com">ankalagishrushti26@gmail.com</a></p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/shrushti-ankalagi-599082389">View Profile</a></p>
+<p>GitHub: <a href="https://github.com/Shrushtivankalagi26">GitHub Profile</a></p>
+</section>
+
+<footer>
+<p>© 2026 Shrushti V Ankalagi</p>
+</footer>
+
+</body>
+</html>
